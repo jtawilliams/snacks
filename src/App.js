@@ -5,12 +5,14 @@ import Footer from './components/footer'
 import AddReviewForm from './components/addReviewForm'
 import SnackList from './components/snackList'
 import Signup from './components/signup'
+import SnackInfo from './components/snackInfo'
 
 class App extends Component {
 	constructor() {
 		super()
 		this.state = {
-			snacks: []
+			snacks: [],
+			selectedSnack: null
 		}
 	}
 
@@ -53,11 +55,18 @@ class App extends Component {
 			snackList: [...this.state.snackList, newReview]
 		})
 	}
+	grabThis = e => {
+    const array = this.state.snackInfo.filter(snack => snack.name === e);
+     this.setState({
+       selectedSnack: array[0],
+   	});
+   };
+
   render() {
     return (
       <div className="App">
         <Header />
-		<SnackList snacks={this.state.snacks}/>
+		<SnackList snacks={this.state.snacks} grabThis={this.state.selectedSnack} />
 		<AddReviewForm {...this.state} titleInput={this.titleInput} textInput={this.textInput} rating={this.ratingInput}/>
 		<Signup />
 		<Footer />

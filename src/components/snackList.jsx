@@ -1,14 +1,13 @@
 import React from 'react';
+import SnackCard from './snackCard'
 
 const SnackList = (props) => {
 	let snacks = props.snacks.map(snack => {
     return (
     <div>
 		<section>
-			<h4>{snack.name}</h4>
-			<small>{snack.description}</small>
-			<p>{snack.price}</p>
-			<small>{snack.img}</small>
+			<button onClick={props.SnackInfo}>{snack.name}</button>
+
 		</section>
     </div>
     )
